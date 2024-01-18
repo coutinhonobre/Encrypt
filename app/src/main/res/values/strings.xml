@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Encrypt</string>
+    <string name="digito">Digito</string>
+    <string name="converter">Converter</string>
+</resources>
