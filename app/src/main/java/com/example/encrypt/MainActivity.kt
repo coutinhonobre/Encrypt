@@ -45,9 +45,22 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.textViewNovo).text = mensagemCriptografadaBase64
             findViewById<TextView>(R.id.textViewOriginal).text = mensagemDescriptografadaString
 
+
+            // Criptografia e codificação para Base64
+            val mensagemCriptografadaBase64Nonce = rsaCrypt.encryptToBase64Nonce(mensagemOriginal.toByteArray(), publicKey)
+
+            // Descriptografia de uma string Base64
+            val mensagemDescriptografadaNonce = rsaCrypt.decryptFromBase64Nonce(mensagemCriptografadaBase64Nonce, privateKey)
+            val mensagemDescriptografadaStringNonce = String(mensagemDescriptografadaNonce)
+
+            findViewById<TextView>(R.id.textViewOriginalPosNonce).text = mensagemCriptografadaBase64Nonce
+            findViewById<TextView>(R.id.textViewNovoComNonce).text = mensagemDescriptografadaStringNonce
+
             Log.d("criptografia", "mensagemOriginal: $mensagemOriginal")
             Log.d("criptografia", "mensagemCriptografadaBase64: $mensagemCriptografadaBase64")
             Log.d("criptografia", "mensagemDescriptografadaString: $mensagemDescriptografadaString")
+            Log.d("criptografia", "mensagemCriptografadaBase64Nonce: $mensagemCriptografadaBase64Nonce")
+            Log.d("criptografia", "mensagemDescriptografadaStringNonce: $mensagemDescriptografadaStringNonce")
         }
 
 
